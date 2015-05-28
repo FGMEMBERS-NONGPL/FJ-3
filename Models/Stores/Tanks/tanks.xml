@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!-- external fuel tanks, by Dave Culp -->
+
+<PropertyList>
+
+ <path>tanks.ac</path>
+
+ <animation>
+  <type>select</type>
+  <object-name>LTank</object-name>
+  <object-name>RTank</object-name>
+  <condition>
+   <not>
+     <property>fdm/jsbsim/systems/armament/release</property>
+   </not>
+  </condition>
+ </animation>
+
+
+ <!-- *** LoD *** -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>12000</max-m>
+ </animation>
+
+</PropertyList>
