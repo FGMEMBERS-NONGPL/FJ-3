@@ -1,0 +1,1029 @@
+<!-- A wrapper file for the FJ-3 3D  model. Yasim version -->
+
+<PropertyList>
+ 
+  <path>FJ3.ac</path>
+
+  <sound><path>Aircraft/FJ-3/Sounds/mp-sound.xml</path></sound>
+  
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/FJ-3/Models/Liveries", 10);
+    </load>
+    <unload>
+      livery_update.stop();
+    </unload>
+  </nasal>
+ 
+ <!-- fuselage -->
+  <animation>
+        <type>material</type>
+        <object-name>fuselage</object-name>
+		<object-name>CanopyFrame</object-name>
+        <object-name>NoseGearStrutDoor</object-name>
+		<object-name>NoseGearDoor</object-name>
+		<object-name>NoseWellCoverAft</object-name>
+		<object-name>NoseWellCoverFwd</object-name>
+		<object-name>RMainGearDoorInner</object-name>
+		<object-name>LMainGearDoorInner</object-name>
+		<object-name>MainWellCoversInner</object-name>
+		<object-name>TailhookDoors</object-name>
+		<object-name>LSpeedbrakeCover</object-name>
+		<object-name>RSpeedbrakeCover</object-name>
+		<object-name>TailSkid</object-name>
+		<object-name>LSpeedbrakeSkin</object-name>
+		<object-name>RSpeedbrakeSkin</object-name>
+		<object-name>WindscreenFrame</object-name>
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-fuselage</texture-prop>
+        <texture>fuselage.png</texture>
+    </animation>
+ 
+ 
+	
+	
+ 
+ 
+ <!-- wings -->
+    <animation>
+        <type>material</type>
+		<object-name>LWing</object-name>
+        <object-name>LWing-Outer</object-name>
+        <object-name>LAileron</object-name>
+		<object-name>LFlap</object-name>
+		<object-name>RefuelFairing</object-name>
+		<object-name>MainWellCoversOuter</object-name>
+		<object-name>RWingFence</object-name>
+		<object-name>RWing</object-name>
+		<object-name>RWing-Outer</object-name>
+		<object-name>RAileron</object-name>
+		<object-name>RFlap</object-name>
+		<object-name>MainWellCoversOuter</object-name>
+				<object-name>RWingFence</object-name>
+		<object-name>RHTail</object-name>
+		<object-name>RElevator</object-name>
+		<object-name>LHTail</object-name>
+		<object-name>LElevator</object-name>
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-wing</texture-prop>
+        <texture>FJ3_02.png</texture>
+    </animation>
+	
+	
+	
+
+	<!-- other bits -->
+    <animation>
+        <type>material</type>
+		<object-name>Inlet</object-name>
+        <object-name>VTail</object-name>
+        <object-name>Rudder</object-name>
+		<object-name>RMainGear</object-name>
+		<object-name>LMainGear</object-name>
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-bits</texture-prop>
+        <texture>FJ3_01.png</texture>
+    </animation>
+	
+	<!-- tanks -->
+    <animation>
+        <type>material</type>
+		<object-name>LTank</object-name>
+        <object-name>RTank</object-name>
+        
+		
+        <property-base>sim/model/livery</property-base>
+        <texture-prop>texture-tanks</texture-prop>
+        <texture>tank.png</texture>
+    </animation>
+  
+
+
+<!-- ******************** instruments *******************-->
+
+ <model>
+  <path>Aircraft/FJ-3/Models/panel.xml</path>
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0</z-m>
+  </offsets>
+ </model>
+ 
+ 
+ <!-- pilot -->
+
+ 
+ <model>
+ <name>pilot</name>
+  <path>Aircraft/FJ-3/Models/pilots/pilot.xml</path>
+  <offsets>
+   <x-m>-2</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.5</z-m>
+  </offsets>
+ </model>
+ 
+
+<!-- ********************** stores **********************-->
+
+ <model>
+  <path>Aircraft/FJ-3/Models/Stores/loads.xml</path>
+ </model>
+
+
+<!-- ********************** effects *********************-->
+
+ <!-- Transparent Surfaces for Rembrandt rendering -->
+   
+    <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>RearGlass</object-name>
+         <object-name>CanopyGlass</object-name>
+	<object-name>WindscreenGlass</object-name>
+	<object-name>mirror</object-name>
+	<object-name>gunsightglass</object-name>
+	<object-name>pipper</object-name>
+		
+
+  </animation>
+  
+  
+  <effect>
+      <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>CanopyGlass</object-name>
+	<object-name>WindscreenGlass</object-name>
+	<object-name>mirror</object-name>
+	<object-name>gunsightglass</object-name>
+	<object-name>pipper</object-name>
+   </effect>
+   
+    <!-- Turns off non rembrant lighting and effects -->
+<animation>
+        <type>select</type>
+       
+	<object-name>gunsightglass</object-name>
+	
+		<condition>
+            <not>
+            <property>/sim/rendering/rembrandt/enabled</property>
+            </not>
+        </condition>
+    </animation>	
+
+
+ <model>
+  <path>Aircraft/FJ-3/Models/effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m> 0.30</x-m>
+     <y-m>-5.53</y-m>
+     <z-m>-0.58</z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+
+ <model>
+  <path>Aircraft/FJ-3/Models/effects/tiptrail/tiptrail.xml</path>
+   <offsets>
+     <x-m> 0.30</x-m>
+     <y-m> 5.53</y-m>
+     <z-m>-0.58</z-m>
+     <pitch-deg>0</pitch-deg>
+   </offsets>
+ </model>
+
+  <!-- Contrail -->
+  <model>
+    <path>Aircraft/FJ-3/Models/effects/smoke/smokeL.xml</path>
+    <offsets>
+      <x-m>   9.0 </x-m>
+      <y-m>   0.0 </y-m>
+      <z-m>   0.0 </z-m>
+    </offsets>
+  </model>
+
+
+<!-- ******************** animations ********************-->
+
+
+ <animation>
+  <type>select</type>
+  <object-name>NoseGearStrutDoor</object-name>
+  <object-name>NoseGearStrut</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>NoseGearTire</object-name>
+  <object-name>NoseGearStrutLower</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LMainGear</object-name>
+  <object-name>LMainTire</object-name>
+  <object-name>RMainGear</object-name>
+  <object-name>RMainTire</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0.15</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>NoseGearDoor</object-name>
+  <object-name>LMainGearDoorInner</object-name>
+  <object-name>RMainGearDoorInner</object-name>
+  <condition>
+   <and>
+   <not-equals>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0</value>
+   </not-equals>
+   <not-equals>
+    <property>gear/gear[0]/position-norm</property>
+    <value>1</value>
+   </not-equals>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>NoseWellCoverAft</object-name>
+  <object-name>MainWellCoversInner</object-name>
+  <condition>
+   <or>
+    <equals>
+     <property>gear/gear[0]/position-norm</property>
+     <value>0</value>
+    </equals>
+    <equals>
+     <property>gear/gear[0]/position-norm</property>
+     <value>1</value>
+    </equals>
+   </or>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>NoseWellCoverFwd</object-name>
+  <object-name>MainWellCoversOuter</object-name>
+  <condition>
+   <equals>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseGearStrut</object-name>
+  <object-name>NoseGearStrutDoor</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>   
+  <center>
+   <x-m>-4.31</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.85</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ForkUpper</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>   
+  <center>
+   <x-m>-4.31</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.85</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ForkLower</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>   
+  <center>
+   <x-m>-4.31</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.85</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseGearTire</object-name>
+  <object-name>NoseGearStrutLower</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <factor>-90</factor>
+  <offset-deg>90</offset-deg>   
+  <center>
+   <x-m>-4.31</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.85</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseGearTire</object-name>
+  <object-name>NoseGearStrutLower</object-name>
+  <property>sim/multiplay/generic/float[1]</property>
+  <factor>60</factor>
+  <axis>
+     <x1-m>-4.316</x1-m>
+     <y1-m>0</y1-m>
+     <z1-m>-1.259</z1-m>
+     <x2-m>-4.328</x2-m>
+     <y2-m>0</y2-m>
+     <z2-m>-1.410</z2-m>
+  </axis>   
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>NoseGearTire</object-name>
+   <object-name>NoseGearStrutLower</object-name>
+   <property>fdm/jsbsim/systems/nose_lift/strut-pos-norm</property>
+   <factor>-0.1795</factor>
+   <axis>
+	 <x>0.07947</x>
+	 <y>0</y>
+	 <z>1</z>
+   </axis>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>ForkLower</object-name>
+   <property>fdm/jsbsim/systems/nose_lift/strut-pos-norm</property>
+   <factor>-0.1795</factor>
+   <axis>
+	 <x>0.07947</x>
+	 <y>0</y>
+	 <z>1</z>
+   </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ForkUpper</object-name>
+  <property>fdm/jsbsim/systems/nose_lift/strut-pos-norm</property>
+  <factor>40</factor>
+  <center>
+   <x-m>-4.294</x-m>
+   <y-m>0</y-m>
+   <z-m>-1.237</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ForkLower</object-name>
+  <property>fdm/jsbsim/systems/nose_lift/strut-pos-norm</property>
+  <factor>50</factor>
+  <center>
+   <x-m>-4.303</x-m>
+   <y-m>0</y-m>
+   <z-m>-1.42</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseGearDoor</object-name>
+  <property>/gear/gear/position-norm</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>0.1</ind><dep>0</dep></entry>
+    <entry><ind>0.9</ind><dep>0</dep></entry>
+    <entry><ind>1</ind><dep>90</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>-4.49</x-m>
+   <y-m>-0.26</y-m>
+   <z-m>-0.86</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>NoseGearTire</object-name>
+  <property>fdm/jsbsim/gear/unit[0]/wheel-speed-fps</property>
+  <factor>75.92</factor>
+  <center>
+   <x-m>-4.355</x-m>
+   <y-m>0</y-m>
+   <z-m>-1.803</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>TailSkid</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <factor>-45</factor>
+  <offset-deg>45</offset-deg>   
+  <center>
+   <x-m>4.192</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.56</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LMainTire</object-name>
+  <object-name>LMainGear</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>1</ind><dep>0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>-0.07</x-m>
+   <y-m>-1.546</y-m>
+   <z-m>-0.87</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LMainGearDoorInner</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>0.1</ind><dep>0</dep></entry>
+    <entry><ind>0.9</ind><dep>0</dep></entry>
+    <entry><ind>1</ind><dep>90</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>-0.59</x-m>
+   <y-m>-0.09</y-m>
+   <z-m>-0.86</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RMainTire</object-name>
+  <object-name>RMainGear</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>1</ind><dep>0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>-0.07</x-m>
+   <y-m>1.54</y-m>
+   <z-m>-0.87</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RMainGearDoorInner</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>0.1</ind><dep>0</dep></entry>
+    <entry><ind>0.9</ind><dep>0</dep></entry>
+    <entry><ind>1</ind><dep>90</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>-0.59</x-m>
+   <y-m>0.09</y-m>
+   <z-m>-0.86</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>LMainTire</object-name>
+  <property>fdm/jsbsim/gear/unit[1]/wheel-speed-fps</property>
+  <factor>52.12</factor>
+  <center>
+   <x-m>0.0039</x-m>
+   <y-m>-1.295</y-m>
+   <z-m>-1.54</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>RMainTire</object-name>
+  <property>fdm/jsbsim/gear/unit[2]/wheel-speed-fps</property>
+  <factor>52.12</factor>
+  <center>
+   <x-m>0.0039</x-m>
+   <y-m>1.295</y-m>
+   <z-m>-1.54</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LElevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-25</factor>
+  <axis>
+     <x1-m>5.117</x1-m>
+     <y1-m>-0.375</y1-m>
+     <z1-m>0.425</z1-m>
+     <x2-m>6.216</x2-m>
+     <y2-m>-2.402</y2-m>
+     <z2-m>0.425</z2-m>
+  </axis> 
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RElevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>25</factor>
+  <axis>
+     <x1-m>5.117</x1-m>
+     <y1-m>0.375</y1-m>
+     <z1-m>0.425</z1-m>
+     <x2-m>6.216</x2-m>
+     <y2-m>2.402</y2-m>
+     <z2-m>0.425</z2-m>
+  </axis>   
+ </animation>
+
+ <!-- Wing Folding, left side -->
+ <animation>
+  <type>rotate</type>
+  <object-name>LWing-Outer</object-name>
+  <object-name>LNavLight</object-name>
+   <object-name>redlight</object-name>
+  <property>instrumentation/doors/wings/position-norm</property>
+  <factor>-90</factor>
+ 
+  <axis>
+     <x1-m> 0.24</x1-m>
+     <y1-m>-3.52</y1-m>
+     <z1-m>-0.58</z1-m>
+     <x2-m> 1.2</x2-m>
+     <y2-m>-3.01</y2-m>
+     <z2-m>-0.58</z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>LAileron</object-name>
+ <property>instrumentation/doors/wings/position-norm</property>
+  <factor>-90</factor>
+ 
+  <axis>
+     <x1-m> 0.24</x1-m>
+     <y1-m>-3.52</y1-m>
+     <z1-m>-0.58</z1-m>
+     <x2-m> 1.2</x2-m>
+     <y2-m>-3.01</y2-m>
+     <z2-m>-0.58</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LAileron</object-name>
+  <property>surface-positions/aileron-pos-norm</property>
+  <factor>15</factor>
+  <axis>
+     <x1-m>2.771</x1-m>
+     <y1-m>-5.518</y1-m>
+     <z1-m>-0.545</z1-m>
+     <x2-m>1.248</x2-m>
+     <y2-m>-2.98</y2-m>
+     <z2-m>-0.67</z2-m>
+  </axis>
+ </animation>
+
+ <!-- Wing Folding, right side -->
+ <animation>
+  <type>rotate</type>
+  <object-name>RWing-Outer</object-name>
+  <object-name>RNavLight</object-name>
+  <object-name>greenlight</object-name>
+  <object-name>pitot</object-name>
+<property>instrumentation/doors/wings/position-norm</property>
+  <factor>90</factor>
+  
+  <axis>
+     <x1-m> 0.24</x1-m>
+     <y1-m> 3.52</y1-m>
+     <z1-m>-0.58</z1-m>
+     <x2-m> 1.2</x2-m>
+     <y2-m> 3.01</y2-m>
+     <z2-m>-0.58</z2-m>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>RAileron</object-name>
+ <property>instrumentation/doors/wings/position-norm</property>
+  <factor>90</factor>
+  
+  <axis>
+     <x1-m> 0.24</x1-m>
+     <y1-m> 3.52</y1-m>
+     <z1-m>-0.58</z1-m>
+     <x2-m> 1.2</x2-m>
+     <y2-m> 3.01</y2-m>
+     <z2-m>-0.58</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RAileron</object-name>
+  <property>surface-positions/aileron-pos-norm</property>
+  <factor>15</factor>
+  <axis>
+     <x1-m>2.771</x1-m>
+     <y1-m>5.518</y1-m>
+     <z1-m>-0.545</z1-m>
+     <x2-m>1.248</x2-m>
+     <y2-m>2.98</y2-m>
+     <z2-m>-0.67</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>-15</factor>
+  <offset-deg>0</offset-deg>   
+  <axis>
+     <x1-m>5.484</x1-m>
+     <y1-m>0</y1-m>
+     <z1-m>1.005</z1-m>
+     <x2-m>6.277</x2-m>
+     <y2-m>0</y2-m>
+     <z2-m>3.109</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>30</factor>
+  <axis>
+     <x1-m>1.248</x1-m>
+     <y1-m>-2.98</y1-m>
+     <z1-m>-0.67</z1-m>
+     <x2-m>0.064</x2-m>
+     <y2-m>-0.713</y2-m>
+     <z2-m>-0.78</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>RFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-30</factor>
+  <axis>
+     <x1-m>1.248</x1-m>
+     <y1-m>2.98</y1-m>
+     <z1-m>-0.67</z1-m>
+     <x2-m>0.064</x2-m>
+     <y2-m>0.713</y2-m>
+     <z2-m>-0.78</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LSpeedbrake</object-name>
+  <object-name>LSpeedbrakeSkin</object-name>
+  <property>surface-positions/speedbrake-pos-norm</property>
+  <factor>50</factor>
+  <axis>
+     <x1-m>2.482</x1-m>
+     <y1-m>-0.627</y1-m>
+     <z1-m>-0.119</z1-m>
+     <x2-m>2.505</x2-m>
+     <y2-m>-0.568</y2-m>
+     <z2-m>-0.502</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RSpeedbrake</object-name>
+  <object-name>RSpeedbrakeSkin</object-name>
+  <property>surface-positions/speedbrake-pos-norm</property>
+  <factor>-50</factor>
+  <axis>
+     <x1-m>2.482</x1-m>
+     <y1-m>0.627</y1-m>
+     <z1-m>-0.119</z1-m>
+     <x2-m>2.505</x2-m>
+     <y2-m>0.568</y2-m>
+     <z2-m>-0.502</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LSpeedbrakeCover</object-name>
+  <object-name>RSpeedbrakeCover</object-name>
+  <condition>
+   <less-than>
+    <property>surface-positions/speedbrake-pos-norm</property>
+    <value>0.05</value>
+   </less-than>
+  </condition>
+ </animation>
+<!--
+ <animation>
+  <type>rotate</type>
+  <object-name>Tailhook</object-name>
+  <property>gear/tailhook/position-norm</property>
+  <factor>-50</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>2.424</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.71</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+-->
+
+<animation>
+ <type>rotate</type>
+ <object-name>Tailhook</object-name>
+ <property>gear/tailhook/position-norm</property>
+ <factor>95</factor>
+ <center>
+  <x-m> 2.4</x-m>
+  <y-m> 0.000</y-m>
+  <z-m>-0.982</z-m>
+ </center>
+ <axis>
+  <x>0</x>
+  <y>1</y>
+  <z>0</z>
+ </axis>
+</animation>
+
+
+ <animation>
+  <type>select</type>
+  <object-name>TailhookDoors</object-name>
+  <condition>
+   <greater-than>
+   <property>gear/tailhook/position-norm</property>
+    <value>0</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <!-- Suppress Seat Model in Cockpit View -->
+ <animation>
+  <type>select</type>
+  
+  <object-name>pilot</object-name>
+   <object-name>CanopyGlass</object-name>
+	<object-name>WindscreenGlass</object-name>
+  <condition>
+   <not>
+   <equals>
+    <property>/sim/current-view/view-number</property>
+    <value>0</value>
+   </equals>
+   </not>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>LandingLight</object-name>
+  <condition>
+   <equals>
+    <property>gear/gear[0]/position-norm</property>
+    <value>1</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+   <type>translate</type>
+   <object-name>CanopyFrame</object-name>
+   <object-name>CanopyGlass</object-name>
+    <property>instrumentation/doors/crew/position-norm</property>
+   <factor>0.8</factor>
+   <axis>
+	 <x>1</x>
+	 <y>0</y>
+	 <z>0.1</z>
+   </axis>
+ </animation>
+ 
+ <!-- fire -->
+	
+	<model>
+		<name>fire</name>
+		<path>Aircraft/FJ-3/Models/effects/Engine/Fire.xml</path>
+		<condition>
+			<equals>
+				<property>sim/crashed</property>
+				<value type="bool">true</value>
+			</equals>
+		</condition>
+		<offsets>
+			<x-m>4.05</x-m>
+			<y-m>0.00</y-m>
+			<z-m>0.75</z-m>
+			<heading-deg>0</heading-deg>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>	
+	
+	   <!-- lights -->
+  
+   <!-- Landing lights -->
+  
+
+<model>
+    <name>Taxi-Light-Left</name>
+    <path>Aircraft/FJ-3/Models/Lights/light-cone.xml</path>
+    <offsets>
+      <x-m>-4.7</x-m>
+      <y-m>0.1</y-m>
+      <z-m>-1.2</z-m>
+      <pitch-deg>   -9.13</pitch-deg>
+      <heading-deg>0</heading-deg>
+    </offsets>
+  </model>
+  
+  
+ 
+ 
+  <model>
+  <name>redlight</name>
+    <path>Aircraft/FJ-3/Models/Lights/RedLight.xml</path>
+    <offsets>
+      <x-m>  1.6 </x-m>
+      <y-m> -5.6 </y-m>
+      <z-m> -0.5 </z-m>
+    </offsets>
+  </model>
+  
+ 
+
+  <model>
+  <name>greenlight</name>
+    <path>Aircraft/FJ-3/Models/Lights/GreenLight.xml</path>
+    <offsets>
+       <x-m>  1.6 </x-m>
+      <y-m> 5.6 </y-m>
+      <z-m> -0.5 </z-m>
+    </offsets>
+  </model>
+
+
+  
+  
+  <!-- Vapour -->
+  
+  <model>
+		<path>Aircraft/FJ-3/Models/effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-1.5</y-m>
+			<z-m>0.4</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>45</heading-deg>
+		</offsets>
+	</model>
+	
+	<model>
+		<path>Aircraft/FJ-3/Models/effects/Vapour/Vapour2.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>1.5</y-m>
+			<z-m>0.4</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>-45</heading-deg>
+		</offsets>
+	</model>
+  
+  
+</PropertyList>
+ 

@@ -1,3 +1,31 @@
+FGUK's North American FJ-2/-3 Fury
+----------------------------------
+
+http://fguk.eu/index.php/hangar/viewdownload/8-military-jets/74-north-american-fj-2-3-fury
+
+![FGUK IMAGE](http://www.fguk.eu/images/jdownloads/screenshots/fgfs-screen-0252.png)
+
+This aircraft requires the DAVE PACK, available <a href="http://www.fgukmedia.co.uk/index.php/hangar/viewdownload/11-other-objects-and-vehicles/170-davepackupdate">HERE</a>
+
+
+Release notes:
+---------------
+ 
+V1.3
+----
+
+* Available in both JSB  & YASIM versions.
+* Both Rembrandt ready with Rembrandt auto detection.
+* HD pilot fitted with  pilot and over the shoulder cam views.
+* YASIM Version has selectible drop tanks + fuel management system.
+* YASIM has engine Start/Stop sequence.
+* Both versions are Carrier capable.
+* Both include AI Scenario for Arrester wire equipped airfields.
+* Many new liveries included.
+* Fixed Wing fold and Canopy animations on the YASIM Version.
+* Tweaked sound file and Audio FX.
+
+******
 
 License:  Creative Commons, CC-BY-NC-SA
 

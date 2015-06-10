@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">Default - USN VF-61, NAS Oceana</name>
+     <texture-fuselage>Liveries/default/fuselage.png</texture-fuselage>
+     <texture-wing>Liveries/default/FJ3_02.png</texture-wing>
+	 <texture-pilot>Liveries/common/FJ3_03.png</texture-pilot>
+	  <texture-bits>Liveries/default/FJ3_01.png</texture-bits>
+	 <texture-tanks>Liveries/default/tank.png</texture-tanks>
+     
+    
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

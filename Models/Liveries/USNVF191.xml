@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">USN VF-191, NAS Miramar</name>
+     <texture-fuselage>Liveries/USNVF191/fuselage.png</texture-fuselage>
+     <texture-wing>Liveries/USNVF191/FJ3_02.png</texture-wing>
+	 <texture-pilot>Liveries/common/FJ3_03.png</texture-pilot>
+	  <texture-bits>Liveries/USNVF191/FJ3_01.png</texture-bits>
+	 <texture-tanks>Liveries/USNVF191/tank.png</texture-tanks>
+     
+    
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	
+	
+
+<!--station left 1 -->
+<model>
+<name>left Wing Droptank</name>
+<path>Aircraft/FJ-3/Models/Stores/Tanks/ltank.ac</path>
+<offsets>
+<x-m>0</x-m>
+<y-m>0</y-m>
+<z-m>0</z-m>
+<pitch-deg>0</pitch-deg>
+</offsets>
+</model>	
+  
+<animation>
+<type>select</type>
+<object-name>left Wing Droptank</object-name>      
+<condition>
+<and>
+<equals>
+<property>sim/weight[0]/selected</property>
+<value>Droptank</value>
+</equals>
+<equals>
+<property>controls/armament/station[0]/release</property>
+<value>false</value>
+</equals>
+</and>
+</condition>
+</animation> 
+
+
+
+
+<!--station right 1 -->
+  	<model>
+		<name>right Wing Droptank</name>
+		<path>Aircraft/FJ-3/Models/Stores/Tanks/rtank.ac</path>
+		<offsets>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>	
+  <animation>
+    <type>select</type>
+    <object-name>right Wing Droptank</object-name>      
+    <condition>
+      <and>
+        <equals>
+          <property>sim/weight[1]/selected</property>
+          <value>Droptank</value>
+        </equals>
+        <equals>
+          <property>controls/armament/station[1]/release</property>
+          <value>false</value>
+        </equals>
+      </and>
+    </condition>
+  </animation>
+	
+
+</PropertyList>

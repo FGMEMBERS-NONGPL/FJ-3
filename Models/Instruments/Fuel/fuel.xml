@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- FJ-3 fuel gauge, by Dave Culp -->
+<!-- F-80C fuel gauge, by Dave Culp -->
 
 <PropertyList>
 
@@ -21,7 +21,7 @@
   <animation>
   <type>rotate</type>
   <object-name>needle</object-name>
-  <property>consumables/fuel/tank[0]/level-lbs</property>
+  <property>consumables/fuel/tank[0]/level-lb</property>
   <factor>0.06</factor>
   <center>
    <x-m>0.02</x-m>
@@ -35,13 +35,6 @@
   </axis>
  </animation>  
 
- <animation>
-  <type>select</type>
-  <object-name>RefuelLight</object-name>
-  <condition>
-    <property>systems/refuel/contact</property>
-  </condition>
- </animation>  
 
  <!-- *** LoD *** -->
  <animation>

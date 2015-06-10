@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">USN Naval Air Training Center</name>
+     <texture-fuselage>Liveries/USNNATC/fuselage.png</texture-fuselage>
+     <texture-wing>Liveries/USNNATC/FJ3_02.png</texture-wing>
+	 <texture-pilot>Liveries/common/FJ3_03.png</texture-pilot>
+	  <texture-bits>Liveries/USNNATC/FJ3_01.png</texture-bits>
+	 <texture-tanks>Liveries/USNNATC/tank.png</texture-tanks>
+     
+    
+
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

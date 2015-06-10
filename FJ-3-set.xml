@@ -10,11 +10,19 @@ License:  Creative Commons, CC-BY-NC-SA
 
 <PropertyList>
 
+ 
  <sim>
 
   <description>North American FJ-3 Fury</description>
-  <author>David Culp (FDM), Alpha Simulations (3D)</author>
-  <status>beta</status>
+  <author>David Culp (FDM), Alpha Simulations (3D), StuartC</author>
+  <status>beta V1.3</status>
+  
+  <rating>
+<FDM type="int">3</FDM>
+<systems type="int">2</systems>
+<cockpit type="int">2</cockpit>
+<model type="int">2</model>
+</rating>
   <flight-model>jsb</flight-model>
   <aero>FJ3-jsbsim</aero>
 
@@ -29,7 +37,19 @@ License:  Creative Commons, CC-BY-NC-SA
   <submodels> 
     <serviceable type="bool">true</serviceable>
     <path>Aircraft/FJ-3/submodels.xml</path>
+	<path>Aircraft/P-80/Models/effects/guns/submodels.xml</path>
   </submodels>
+  
+  <ai>
+      <scenario>
+	   <path>Aircraft/FJ-3/AI/EGOD_arrestor_cables.xml</path>
+	  </scenario>
+    </ai>
+
+  
+   <mp-systems>
+    <combat-enabled type="bool">true</combat-enabled>
+   </mp-systems>
 
   <virtual-cockpit archive="y">true</virtual-cockpit>
   <allow-toggle-cockpit archive="y">false</allow-toggle-cockpit>
@@ -37,7 +57,13 @@ License:  Creative Commons, CC-BY-NC-SA
   <panel>
     <visibility archive="y">false</visibility>
   </panel>
-
+  
+  
+ <model>
+   <path>Aircraft/FJ-3/Models/FJ-3.xml</path>
+  </model>
+  
+  
   <view n="0">
    <internal archive="y">true</internal>
    <config>
@@ -47,10 +73,50 @@ License:  Creative Commons, CC-BY-NC-SA
     <z-offset-m archive="y">-1.8</z-offset-m><!-- aft/fore -->
    </config>
   </view>
+  
+  
+   <view n="100">
+	   <name>Pilot cam</name>
+        <internal archive="y">false</internal>
+        <config>
+		 <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+     <x-offset-m archive="y">0.0</x-offset-m><!-- right/left -->
+    <y-offset-m archive="y">1.06</y-offset-m><!-- up/down -->
+    <z-offset-m archive="y">-2.5</z-offset-m><!-- aft/fore -->
+          <pitch-offset-deg>0</pitch-offset-deg>
+		  <heading-offset-deg>180</heading-offset-deg>
+          <default-field-of-view-deg>95</default-field-of-view-deg>
+        </config>
+      </view>
+	  
+	  
+	   <view n="101">
+	   <name>Over the shoulder</name>
+        <internal archive="y">false</internal>
+        <config>
+		 <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+        <x-offset-m archive="y">0.28</x-offset-m><!-- right/left -->
+    <y-offset-m archive="y">1.06</y-offset-m><!-- up/down -->
+    <z-offset-m archive="y">-1.5</z-offset-m><!-- aft/fore -->
+          <pitch-offset-deg>-3</pitch-offset-deg>
+		  <heading-offset-deg>14</heading-offset-deg>
+          <default-field-of-view-deg>65</default-field-of-view-deg>
+        </config>
+      </view>
 
-  <model>
-   <path>Aircraft/FJ-3/Models/FJ-3.xml</path>
-  </model>
+ 
+  
+    <systems>
+      <autopilot>
+        <path>Aircraft/FJ-3/Systems/autopilot5.xml</path>
+      </autopilot>
+     <refuel>
+       <type>probe</type>
+       <serviceable type="bool">true</serviceable>
+     </refuel>
+    </systems>
 
   <chase-distance-m>-18</chase-distance-m>
 
@@ -126,6 +192,8 @@ License:  Creative Commons, CC-BY-NC-SA
       </parameters> 
     </redout>
   </rendering>
+  
+   <menubar include="Dialogs/menu.xml"/>
 
  </sim>
 
@@ -265,15 +333,60 @@ License:  Creative Commons, CC-BY-NC-SA
    <property>/controls/engines/engine[0]/cutoff</property>
   </binding>
  </key>
+ 
+ <key n="101">
+     <name>e</name>
+     <desc>Guns</desc>
+     <binding>
+       <command>nasal</command>
+       <script>guns.fire_MG()</script>
+     </binding>
+     <mod-up>
+       <binding>
+         <command>nasal</command>
+         <script>guns.stop_MG()</script>
+       </binding>
+     </mod-up>
+   </key>
 
  </keyboard>
 </input>
 
  <instrumentation>
-  <marker-beacon>
-    <volume type="double" archive="y">0.0</volume>
-  </marker-beacon>
-  <rdmi-mode type="int">0</rdmi-mode> <!-- 0=TAC, 1=VOR, 2=ADF -->
+ <marker-beacon>
+            <volume type="double" archive="y">0.0</volume>
+        </marker-beacon>
+		<radar>
+			<range type="int" archive="y">20</range>
+			<range-factor type="double" archive="n">0.001888</range-factor>
+			<minimized type="bool" archive="y">false</minimized>
+			<selected type="int">3</selected>
+			<enabled type="bool">true</enabled>
+			<az-field type="double">120</az-field>
+			<range type="double">150</range>
+			<range-selected type="double">50</range-selected>
+			<radar2-range type="double">150</radar2-range>
+			<display-rdr type="bool">true</display-rdr>
+			<radar-standby type="int">3</radar-standby>
+			<mode>
+				<rws type="bool">true</rws>
+				<tws-auto type="bool">false</tws-auto>
+			</mode>
+		 </radar>
+        <rdmi-mode type="int">0</rdmi-mode> <!-- 0=TAC, 1=VOR, 2=ADF -->
+		<radar2>
+			<sweep-width-m type="double">0.0844</sweep-width-m>
+			<range-width-m type="double">0.0846</range-width-m>
+			<radius-ppi-display-m type="double">0.0846</radius-ppi-display-m>
+			<hud-eye-dist-m type="double">0.766</hud-eye-dist-m>
+			<hud-radius-m type="double">0.071</hud-radius-m>
+			<hud-vertical-offset-m type="double">-0.025</hud-vertical-offset-m>
+		</radar2>
+		<rwr>
+			<display-lighting-intens type="double">0.4</display-lighting-intens>
+			<symbology-lighting-intens type="double">1</symbology-lighting-intens>
+		</rwr>
+  
  </instrumentation>
 
  <fdm>
@@ -310,6 +423,45 @@ License:  Creative Commons, CC-BY-NC-SA
    </systems> 
   </jsbsim>
  </fdm>
+ 
+ <nasal>
+ 
+ <FJ-3>
+	  <file>Aircraft/FJ-3/Nasal/light.nas</file>
+	  <file>Aircraft/FJ-3/Nasal/liveries.nas</file>
+	  <file>AircraftFJ-3/Nasal/doors.nas</file>
+	</FJ-3>
+    
+    <guns>
+      <file>Aircraft/FJ-3/Nasal/weapons.nas</file>
+      <file>Aircraft/FJ-3/Nasal/revi.nas</file>
+    </guns>
+	<!--
+	<engines>
+      <file>Aircraft/FJ-3/Nasal/generic-yasim-engine.nas</file>
+      <script>
+        var engine1 = engines.Jet.new(0, 0, 0.01, 5.21, 3, 5, 1, 6);
+        setlistener("sim/signals/fdm-initialized", func
+        {
+          engine1.init();
+        }, 0, 0);
+       </script>
+    </engines>
+	-->
+	 <rwr>
+            <file>Aircraft/Instruments-3d/rwr/rwr.nas</file>
+        </rwr> 
+        <radardist>
+            <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
+        </radardist>
+       	
+	<aar>
+<file>Aircraft/Generic/aar.nas</file>
+</aar>
+	
+	
+	
+  </nasal>
 
 </PropertyList>
 
